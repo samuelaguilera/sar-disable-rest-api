@@ -1,4 +1,4 @@
-=== Disable REST API ===
+=== SAR Disable REST API ===
 Contributors: samuelaguilera
 Tags: api, rest api
 Requires at least: 4.4
