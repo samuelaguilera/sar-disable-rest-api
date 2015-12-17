@@ -23,7 +23,17 @@ Fortunately the WP core team provides hooks and filters to turn it off. This plu
 
 * Extract the zip file and just drop the contents in the <code>wp-content/plugins/</code> directory of your WordPress installation (or install it directly from your dashboard) and then activate the plugin from Plugins page.
 * There's not options page, simply install and activate.
-  
+
+== Frequently Asked Questions ==
+
+= How can I test if the REST API was really disabled? =
+
+Just use your browser to go to http://example.com/wp-json (replace example.com with your site domain). You will see the following message:
+
+`{"code":"rest_disabled","message":"The REST API is disabled on this site."}`
+
+You can also check your HTTP headers and your site page source code to see that the link to https://api.w.org/ is gone.
+                                                                                                                           
 == Changelog ==
 
 = 1.0 =
