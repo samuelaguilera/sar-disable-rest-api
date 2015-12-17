@@ -14,6 +14,8 @@ Disable WP core REST API introduced in WP 4.4. and remove its HTTP header and li
 REST API introduced in WordPress 4.4 is a great resource for people interested in using it, but if you don't want to use it probably you will want to close this new door to your WordPress.
 
 Fortunately the WP core team provides hooks and filters to turn it off. This plugin simply makes use of them to disable the REST API server and remove its HTTP header and link tag.
+
+**SUPPORT:** If you have any support question, please [create an issue at the Github repository](https://github.com/samuelaguilera/sar-disable-rest-api/issues).
                                                                 
 = Requirements =
 
