@@ -26,7 +26,17 @@ If you're happy with the plugin [please don't forget to give it a good rating](h
 = Requirements =
 
 * WordPress 4.7 or higher.
-    	
+
+= Usage =
+
+To disable the REST API completely simply install the plugin from the Plugins page and enable it.
+
+If you don't want to disable the REST API but require user to be logged in instead, go to Settings -> General page and set the REST API to option to "Logged In Only", and click Save Changes.
+
+You can change the option back to "Off" if you want to disable the REST API again.
+
+To return to WordPress default, simply deactivate the plugin. 
+
 == Frequently Asked Questions ==
 
 = How can I test if the plugin is working? =
