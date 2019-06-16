@@ -1,10 +1,8 @@
 ## Description 
 
-The WordPress REST API is a great resource for people interested in using it, but if you don't want to use it probably you will want to close this door to your WordPress.
+The WordPress REST API is a great resource, but if you don't want to use it probably you will want to close this door to your WordPress.
 
-By default, this plugin removes all filters and actions related to WordPress REST API, and returns a 404 error for requests sent to the REST API URL endpoints to completely disable it.
-
-**Other plugins will not disable REST API but only return an error, processed by the REST API, when a request is received. This plugin really prevents the REST API from handling any request.** 
+Unlike other popular plugins that aims to disable the REST API but **only return an error, processed by the REST API**, when a request is received, by default, this plugin **removes all filters and actions related to WordPress REST API, and returns a 404 error for requests sent to the REST API URL endpoints, effectively blocking any use of the REST API**.
 
 Optionally you can set the **REST API setting in Settings -> General page** to "Logged In Only" for a less drastical action, to keep REST API access enabled but require the user to be logged in to accept the requests.
 

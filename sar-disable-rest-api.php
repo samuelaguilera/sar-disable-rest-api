@@ -55,11 +55,11 @@ if ( $sar_rest_api_mode != 'logged' ) { // Disable REST API if option is not set
 		remove_action( 'rest_api_init', 'create_initial_rest_routes', 99 );
 		remove_action( 'parse_request', 'rest_api_loaded' );
 
-		// Invalidate the REST API URL prefix
-		add_filter ( 'rest_url_prefix', '__return_false' );
-
 		// Turn off jsonp REST callback support
-		add_filter('rest_jsonp_enabled', '__return_false');	
+		add_filter('rest_jsonp_enabled', '__return_false');
+
+		// Remove links for /wp-json/oembed/ endpoints
+		add_action( 'wp_head', 'wp_oembed_add_discovery_links' );	
 	
 	}
 
