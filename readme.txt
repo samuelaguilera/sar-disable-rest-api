@@ -52,6 +52,6 @@ If you have set the plugin to "Logged In Only", no changes are made to the page 
 
 == Upgrade Notice ==
 
-= 1.1 =
+= 2.0 =
 
 * Complete rewrite of the plugin to **really disable REST API and removed support for WordPress 4.6.1 and older** versions.
