@@ -1,13 +1,13 @@
-=== Disable REST API ===
+=== Disable REST API for Real===
 Contributors: samuelaguilera
-Tags: api, rest api, wp-json
+Tags: api, rest api, wp-json, json, rest
 Requires at least: 4.7
 Tested up to: 5.2.1
 Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 
-Disable WordPress core REST API (default) or require user to be logged in.
+Really prevents the REST API from handling requests (default) or require user to be logged in.
 
 == Description ==
 
@@ -15,7 +15,7 @@ The WordPress REST API is a great resource for people interested in using it, bu
 
 By default, this plugin removes all filters and actions related to WordPress REST API, and returns a 404 error for requests sent to the REST API URL endpoints to completely disable it.
 
-**Other plugins will not disable REST API but only return an error, processed by the REST API, when a request is received. This plugin really prevents the REST API from handling any request.** 
+Other plugins **will not disable REST API but only return an error, processed by the REST API**, when a request is received. This plugin **really prevents the REST API from handling any request.** 
 
 Optionally you can set the **REST API setting in Settings -> General page** to "Logged In Only" for a less drastical action, to keep REST API access enabled but require the user to be logged in to accept the requests.
 
@@ -26,6 +26,11 @@ If you're happy with the plugin [please don't forget to give it a good rating](h
 = Requirements =
 
 * WordPress 4.7 or higher.
+
+= Features =           
+
+* Disable WordPress core REST API **for real** by removing all filters and actions related to it and returning a 404 error for requests sent to REST API URL endpoints (e.g. https://example.com/wp-json/whatever ).
+* Option to require user to be logged in to use the REST API instead of completely disable it.
 
 = Usage =
 
@@ -48,6 +53,11 @@ You can also check any regular page of your site to confirm the link to the REST
 If you have set the plugin to "Logged In Only", no changes are made to the page headers, but you will receive the following response if you try the REST API without being logged in:
 
 `{"code":"rest_not_logged_in","message":"External REST API requests not allowed for this site.","data":{"status":401}}`
+
+== Screenshots ==
+
+1. REST API option in Settings -> General page.
+2. Jetpack's settings page confirming REST API is disabled.
                                                                                                                            
 == Changelog ==
 

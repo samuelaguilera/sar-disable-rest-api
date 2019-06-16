@@ -1,12 +1,13 @@
 <?php
 /*
-Plugin Name: Disable REST API
-Description: Disable WordPress core REST API (default) or require user to be logged in.
+Plugin Name: Disable REST API for Real
+Description: Really prevents the REST API from handling requests (default) or require user to be logged in.
 Author: Samuel Aguilera
 Version: 2.0
 Author URI: http://www.samuelaguilera.com
 Text Domain: sar-disable-rest-api
 License: GPL3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */
 
 /*
@@ -28,7 +29,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; }
 // Get option value to determine what to do
 $sar_rest_api_mode = get_option( 'sar_disable_rest_api', '' );
 
-if ( $sar_rest_api_mode != 'logged' ) { // Disable REST API if option is not set to Authenticated requests
+if ( $sar_rest_api_mode != 'logged' ) { // Disable REST API if option is not set to Logged In Only
 
 	// Remove REST API filters (including HTTP header and link tags).
 	add_filter( 'init', 'sar_disable_rest_api' );
@@ -81,7 +82,7 @@ if ( $sar_rest_api_mode == 'logged' ) { // Require user to be logged in to use R
 	        return $result;
 	    }
 	    if ( ! is_user_logged_in() ) {
-	        return new WP_Error( 'rest_not_logged_in', wp_filter_nohtml_kses( __( 'External REST API requests not allowed for this site.', 'sar-disable-rest-api' ) ), array( 'status' => rest_authorization_required_code() ) );
+	        return new WP_Error( 'rest_not_logged_in', wp_filter_nohtml_kses( __( 'REST API requests allowed only for logged in users.', 'sar-disable-rest-api' ) ), array( 'status' => rest_authorization_required_code() ) );
 	    }
 	    return $result;
 	} );
@@ -94,19 +95,20 @@ add_filter('admin_init', 'sar_disable_rest_api_settings');
 function sar_disable_rest_api_settings() {
 
     register_setting('general', 'sar_disable_rest_api', 'esc_attr');
-    add_settings_field('sar_disable_rest_api', '<label for="sar_disable_rest_api">' . __( 'REST API' , 'sar-disable-rest-api' ) .'</label>' , 'sar_disable_rest_api_settings_html', 'general');
+    add_settings_field('sar_disable_rest_api', '<label for="sar_disable_rest_api">' . wp_filter_nohtml_kses( __( 'REST API' , 'sar-disable-rest-api' ) ) .'</label>' , 'sar_disable_rest_api_settings_html', 'general');
 }
  
 function sar_disable_rest_api_settings_html() {
     global $sar_rest_api_mode;
 
+    // Set to off as default if option was not set by the user (for previous version and new installations).
     $sar_rest_api_mode = empty ( $sar_rest_api_mode ) ? $sar_rest_api_mode = 'off' : $sar_rest_api_mode;
 
     ?>
-	<select name="sar_disable_rest_api" title="Encryption">
-		<option value="off" <?php selected( $sar_rest_api_mode, 'off' ); ?>><?php _e( 'Disabled', 'sar-disable-rest-api' ) ?></option>
-		<option value="logged" <?php selected( $sar_rest_api_mode, 'logged' ); ?>><?php _e( 'Logged In Only', 'sar-disable-rest-api' ) ?></option>
+	<select name="sar_disable_rest_api" title="REST API">
+		<option value="off" <?php selected( $sar_rest_api_mode, 'off' ); ?>><?php echo wp_filter_nohtml_kses( __( 'Disabled', 'sar-disable-rest-api' ) ) ?></option>
+		<option value="logged" <?php selected( $sar_rest_api_mode, 'logged' ); ?>><?php echo wp_filter_nohtml_kses( __( 'Logged In Only', 'sar-disable-rest-api' ) ) ?></option>
 	</select>
-	<p class="description"><?php echo wp_filter_nohtml_kses( __( "Choose Disabled to completely disable access to WordPress REST API or Logged In Only to keep REST API access enabled but require the user to be logged in to accept the requests.", 'sar-disable-rest-api' ) ) ?></p>
+	<p class="description"><?php echo wp_filter_nohtml_kses( __( 'Choose Disabled to completely disable access to WordPress REST API or Logged In Only to keep REST API access enabled but require the user to be logged in to accept the requests.', 'sar-disable-rest-api' ) ) ?></p>
 	<?php
 }
