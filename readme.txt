@@ -59,7 +59,7 @@ If you have set the plugin to "Logged In Only", no changes are made to the page 
                                                                                                                            
 == Changelog ==
 
-= 1.1 =
+= 2.0 =
 
 * Added option in Settings -> General page to choose between completely disable the REST API (default), or "Logged In Only" to keep REST API access enabled but require the user to be logged in to accept the requests.
 * Removed support for WordPress 4.6.1 and older.
