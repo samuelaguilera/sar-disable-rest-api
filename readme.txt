@@ -2,8 +2,8 @@
 Contributors: samuelaguilera
 Tags: api, rest api, wp-json, json, rest
 Requires at least: 4.7
-Tested up to: 5.2.1
-Stable tag: 2.0
+Tested up to: 5.2.2
+Stable tag: 2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -58,6 +58,10 @@ If you have set the plugin to "Logged In Only", no changes are made to the page 
 2. Jetpack's settings page confirming REST API is disabled.
                                                                                                                            
 == Changelog ==
+
+= 2.1 =
+
+* Minor changes to make code 100% WordPress Coding Standards compliant.
 
 = 2.0 =
 
