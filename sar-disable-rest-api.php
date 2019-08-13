@@ -3,7 +3,7 @@
  * Plugin Name: Disable REST API for Real
  * Description: Really prevents the REST API from handling requests (default) or require user to be logged in.
  * Author: Samuel Aguilera
- * Version: 2.1
+ * Version: 2.1.1
  * Author URI: http://www.samuelaguilera.com
  * Text Domain: sar-disable-rest-api
  * License: GPL3
@@ -66,7 +66,7 @@ if ( 'logged' !== $sar_rest_api_mode ) { // Disable REST API if option is not se
 		add_filter( 'rest_jsonp_enabled', '__return_false' );
 
 		// Remove links for /wp-json/oembed/ endpoints.
-		add_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
 	}
 
